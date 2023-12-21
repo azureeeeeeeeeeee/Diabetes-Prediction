@@ -16,3 +16,11 @@
 <h2>Model</h2>
 <p>For the model, i chose scikit-learn's LogisticRegression() model</p>
 <p>The model has a teest score of 0.8472</p>
+
+<h2>Deployment</h2>
+<p>
+  Im using <a href="https://render.com/">Render</a> for the deployment
+</p>
+<p>
+  You can view the site using this link : https://diabetes-prediction-kf29.onrender.com/
+</p>
