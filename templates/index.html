@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Diabetes Prediction</title>
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles/main.css') }}"
+    />
+
+    <link
+      rel="icon"
+      type="image/png"
+      href=" {{url_for('static', filename='images/heartbeat.png')}} "
+    />
+  </head>
+  <body>
+    <h1>Prediksi Diabetes</h1>
+
+    <form action="{{ url_for('predict') }}" , method="post">
+      <!-- [total_hamil, nilai_glukosa, tekanan_darah, nilai_insulin, nilai_bmi, umur] -->
+      <label for="umur">Masukkan Umur</label>
+      <input type="number" name="umur" placeholder="Umur (Tahun)" required />
+
+      <label for="total_hamil">Masukkan Total Kehamilan</label>
+      <input
+        type="number"
+        name="total_hamil"
+        placeholder="Jumlah Kehamilan"
+        required
+      />
+
+      <label for="nilai_glukosa"
+        >Masukkan Nilai Glukosa (2-hour plasma glucose)</label
+      >
+      <input
+        type="number"
+        name="nilai_glukosa"
+        placeholder="Nilai Glukosa (mg/dL)"
+        required
+      />
+
+      <label for="nilai_insulin"
+        >Masukkan Nilai Insulin (2-Hour Serum Insulin)</label
+      >
+      <input
+        type="number"
+        name="nilai_insulin"
+        placeholder="Nilai Insulin (μU/mL)"
+        required
+      />
+
+      <label for="tekanan_darah"
+        >Masukkan Nilai Tekanan Darah (Diastolic)</label
+      >
+      <input
+        type="number"
+        name="tekanan_darah"
+        placeholder="Tekanan Darah (mmHg)"
+        required
+      />
+
+      <label for="nilai_bmi">Masukkan Nilai BMI</label>
+      <input type="number" name="nilai_bmi" placeholder="BMI" required />
+
+      <input
+        type="submit"
+        value="Submit"
+        style="
+          margin-top: 10px;
+          border-radius: 5px;
+          background-color: whitesmoke;
+        "
+      />
+    </form>
+    {% if hasil %}
+    <main>
+      <p>Orang dengan :</p>
+      <ul>
+        <li>Umur {{ request.form.get('umur') }} Tahun</li>
+        <li>Sudah hamil sebanyak {{ request.form.get('total_hamil') }} kali</li>
+        <li>
+          Nilai Glukosa (2-hour plasma glucose) sebesar {{
+          request.form.get('nilai_glukosa') }} mg/dL
+        </li>
+        <li>
+          Nilai Insulin (2-Hour Serum Insulin) sebesar {{
+          request.form.get('nilai_insulin') }} μU/mL
+        </li>
+        <li>
+          Nilai Tekanan Darah (Diastolic) sebesar {{
+          request.form.get('tekanan_darah') }} mmHg, dan
+        </li>
+        <li>Nilai BMI sebesar {{ request.form.get('nilai_bmi') }}</li>
+      </ul>
+
+      <p>Memiliki <strong>{{ hasil }}</strong></p>
+    </main>
+    {% endif %}
+
+    <footer>
+      <p style="margin-bottom: 5px">Disclaimer :</p>
+      <p>Ini hanyalah sebuah prediksi mesin</p>
+      <p>
+        Untuk informasi medis lebih lanjut, silahkan hubungi tenaga kesehatan
+        professional
+      </p>
+      <a href="https://pngtree.com/freepng/heart-icon-that-beats_4421827.html">
+        png image from pngtree.com/
+      </a>
+    </footer>
+  </body>
+</html>
