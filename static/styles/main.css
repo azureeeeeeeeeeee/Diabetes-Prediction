@@ -19,7 +19,7 @@ h1 {
 form {
   display: flex;
   flex-direction: column;
-  width: 400px;
+  width: 300px;
 }
 
 form label {
